@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapActions, mapMutations } from "vuex";
 
 export default {
   computed: {
@@ -60,10 +60,12 @@ export default {
       }),
   },
   methods: {
-      ...mapMutations({
+      ...mapActions({
         decrimentProd: 'forCart/decrimentProd',
-        clearCart: 'forCart/clearCart',
-        delProd: 'forCart/delProd'
+      }),
+      ...mapMutations({
+        clearCart: 'forCart/CLEAR_CART',
+        delProd: 'forCart/DEL_PROD'
       })
   }
 }

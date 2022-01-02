@@ -15,7 +15,7 @@ export default {
           state.cart.push(product)
         }
     },
-    decrimentProd(state, product) {
+    DECRIMENT_PROD(state, product) {
       if (product) {
         if (product.quantity > 1) {
           product.quantity--
@@ -24,10 +24,10 @@ export default {
         }
       }
     },
-    clearCart(state) {
+    CLEAR_CART(state) {
       state.cart = []
     },
-    delProd(state, product) {
+    DEL_PROD(state, product) {
       state.cart.splice(state.cart.indexOf(product), 1)
     },
   },
@@ -35,6 +35,15 @@ export default {
     addToCart(ctx, product) {
       ctx.commit('ADD_TO_CART', product)
     },
+    decrimentProd(ctx, product) {
+      if (product) {
+        if (product.quantity > 1) {
+          product.quantity--
+        } else {
+          ctx.commit('DECRIMENT_PROD', product)
+        }
+      }
+    }
   },
   getters: {
     cart(state) {
